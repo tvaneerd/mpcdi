@@ -2,6 +2,69 @@ The MPCDI spec is a VESA spec, and the full specification can be found online.
 
 However, many have found the doc less than clear, so here is some additional notes; my understanding of the spec:
 
+Header
+--------
+
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <MPCDI profile="sl" geometry="2" color="1" date="2018-11-16 19:30:11" version="2.0">
+
+It's XML. It's MPCDI version 2.0.  For 3D, we use the "sl" (shader lamp) profile, which means we will export projector "poses" (position, orientation, etc).
+
+Overall structure
+--------
+
+Next in the XML is a single `<display>` node, which describes the scene.  Within the display there _could be_ multiple `<buffer>` nodes (ie for projecting on completely separate surfaces/objects) but, really, it can all be done with a single buffer, so, by convention, Mystique just sets the buffer id to the name of the Mystique file of the project.
+
+Within a buffer, there are multiple `<region>` nodes - basically one for each projector.
+
+    <display>
+        <buffer id="wolf_90_markerless.cal">
+            <region id="Staging Projector_01" xResolution="1400" yResolution="1050" x="0" y="0" xsize="1" ysize="1">
+            ...
+            </region>
+            <region...>
+            ...
+            </region>
+            <region>
+            ...
+            </region>
+        </buffer>
+    </display>
+    
+`<region>`
+---------
+
+A region looks like:
+
+            <region id="Staging Projector_01" xResolution="1400" yResolution="1050" x="0" y="0" xsize="1" ysize="1">
+                <frustum>
+                    <yaw>-54.649008076582298</yaw>
+                    <pitch>30.086445865802251</pitch>
+                    <roll>-35.258246325136348</roll>
+                    <rightAngle>26.536123041449411</rightAngle>
+                    <leftAngle>-26.579532980277939</leftAngle>
+                    <upAngle>20.556835397199524</upAngle>
+                    <downAngle>-20.543387795160175</downAngle>
+                </frustum>
+                <coordinateFrame>
+                    <posx>0.99906</posx>
+                    <posy>-0.70781</posy>
+                    <posz>-0.70934</posz>
+                    <yawx>0.00000</yawx>
+                    <yawy>0.00000</yawy>
+                    <yawz>-1.00000</yawz>
+                    <pitchx>1.00000</pitchx>
+                    <pitchy>0.00000</pitchy>
+                    <pitchz>0.00000</pitchz>
+                    <rollx>0.00000</rollx>
+                    <rolly>1.00000</rolly>
+                    <rollz>0.00000</rollz>
+                </coordinateFrame>
+            </region>
+
+
+
 
 `<coordinateframe>`
 ------------
