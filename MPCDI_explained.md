@@ -266,7 +266,6 @@ tanL + tanR = w/t
 let T = throw-ratio = t/w 
 
 T = 1 / (tanL + tanR)
-
 ```
 
 OK, from left and right angles, we have the throw ratio.  We also need the lens offset:
@@ -277,18 +276,19 @@ From the diagram:
 	r - h = w/2
 	e + h = w/2
 Thus:
-    r - h = e + h
-Sub in r = t*tanR, e = t*tanL
-	t*tanR – h  =  t*tanL + h
+        r - h = e + h
+Recall r = t*tanR and e = t*tanL
+Sub:
+	t*tanR – h = t*tanL + h
 Rearrange:
 	h = t(tanR-tanL)/2
-Recall: T = t/w   ie   t = Tw
+Recall: T = t/w  ie  t = Tw
 Sub:
 	h = Tw(tanR-tanL)/2
 And (from above): T = 1/(tanR+tanL)
 Sub:
 	h = (1/(tanR+tanL))w(tanR-tanL)/2
-
+ie
 	        w(tanR – tanL)
 	h =  -------------------
 	        2(tanR + tanL)
