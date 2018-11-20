@@ -79,8 +79,8 @@ A region looks like:
             </region>
 
 
-The `<frustum>` defines the projector's orientation, and its field of view. See below.
-The `<coordinateframe>` defines the projector's position... and is complicated. See below.
+The `<frustum>` defines the projector's orientation, and its field of view. See below.  
+The `<coordinateframe>` defines the projector's position... and is complicated. See below.  
 
 Let's look at each part.
 
@@ -125,7 +125,7 @@ The other numbers explain "where" those numbers are.  ie for `<posx>`, _which wa
 
 "Figure 2-2" is this picture of an airplane:
 
-![alt text][logo]
+![alt text][airplane]
 
 
 Now imagine that we've turned the plane so that it is facing into the computer screen.
@@ -210,9 +210,6 @@ which you can then move into your x,y,z system.
 
 
 
-[logo]: https://github.com/tvaneerd/mpcdi/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
-
-
 `<frustum>`
 -------
 
@@ -228,11 +225,91 @@ which you can then move into your x,y,z system.
                     <downAngle>-20.543387795160175</downAngle>
                 </frustum>
                 
-Yaw, pitch, and roll are angles (in degrees) around the axes as shown in the airplane diagram.  Note the direction of the arrows.  Also note the order: from the point of view of the _pilot_, 
+The `yaw`, `pitch`, and `roll` are angles (in degrees) around the axes as shown in the airplane diagram.  Note the direction of the arrows.  Also note the order: from the point of view of the _pilot_, 
 
 1. first the plane (or projector) is turned left/right by `yaw` degrees, where positive is a turn to the right.
 2. then the plane/projector is tilted up by `pitch` degrees
-3. then the plane/projector is rolled 
+3. then the plane/projector is rolled along its axis - ie a positive roll is raising the left wing while lowering the right wing
 
-... to be continued ...
+### `<rightAngle>` et al
+
+The 4 angles form a field of view of the projected light.  Positive angles are to the right and up.
+
+Looking down at a planar projection from above,
+
+`L` is the `<leftAngle>`  
+`R` is the `<rightAngle>`  
+`t` is the throw distance  
+`e` is the distance to the left (resulting from `leftAngle`)  
+`r` is the distance to the right (resulting from `rightAngle`)  
+`h` is the horizontal offset distance  
+`w` is the width of the screen  
+
+
+
+![alt text][frustum]
+
+Let's do some math:
+
+```
+tanL = e/t
+tanR = r/t
+
+e = t * tanL
+r = t * tanR
+
+e + r = w
+t*tanL + t*tanR = w
+t (tanL + tanR) = w
+tanL + tanR = w/t
+
+let T = throw-ratio = t/w 
+
+T = 1 / (tanL + tanR)
+
+```
+
+OK, from left and right angles, we have the throw ratio.  We also need the lens offset:
+
+```
+h = horz offset (as distance, not percent)
+From the diagram:
+	r - h = w/2
+	e + h = w/2
+Thus:
+    r - h = e + h
+Sub in r = t*tanR, e = t*tanL
+	t*tanR – h  =  t*tanL + h
+Rearrange:
+	h = t(tanR-tanL)/2
+Recall: T = t/w   ie   t = Tw
+Sub:
+	h = Tw(tanR-tanL)/2
+And (from above): T = 1/(tanR+tanL)
+Sub:
+	h = (1/(tanR+tanL))w(tanR-tanL)/2
+
+	        w(tanR – tanL)
+	h =  -------------------
+	        2(tanR + tanL)
+
+Typically lens offset is represented as a percent of half-width:
+	h% = h/(w/2)
+	h% = (tanR – tanL)/(tanR + tanL)
+    
+Similarly, vertical offset:
+    v% = (tan(Up) - tan(Down)/(tan(Up) + tan(Down))
+```
+
+
+
+
+
+
+
+
+[airplane]: https://github.com/tvaneerd/mpcdi/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
+[frustum]: https://github.com/tvaneerd/mpcdi/blob/master/ThrowRatioAndOffset.png "secret <frustum> decoder ring"
+
+
 
