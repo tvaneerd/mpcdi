@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MPCDI profile="sl" geometry="2" color="1" date="2018-11-16 19:30:11" version="2.0">
+    <display>
+        <buffer id="wolf_90_markerless.cal">
+            <region id="Staging Projector_01" xResolution="1400" yResolution="1050" x="0" y="0" xsize="1" ysize="1">
+                <frustum>
+                    <yaw>-54.649008076582298</yaw>
+                    <pitch>30.086445865802251</pitch>
+                    <roll>-35.258246325136348</roll>
+                    <rightAngle>26.536123041449411</rightAngle>
+                    <leftAngle>-26.579532980277939</leftAngle>
+                    <upAngle>20.556835397199524</upAngle>
+                    <downAngle>-20.543387795160175</downAngle>
+                </frustum>
+                <coordinateFrame>
+                    <posx>0.99906</posx>
+                    <posy>-0.70781</posy>
+                    <posz>-0.70934</posz>
+                    <yawx>0.00000</yawx>
+                    <yawy>0.00000</yawy>
+                    <yawz>-1.00000</yawz>
+                    <pitchx>1.00000</pitchx>
+                    <pitchy>0.00000</pitchy>
+                    <pitchz>0.00000</pitchz>
+                    <rollx>0.00000</rollx>
+                    <rolly>1.00000</rolly>
+                    <rollz>0.00000</rollz>
+                </coordinateFrame>
+            </region>
+            <region id="Staging Projector_02" xResolution="1400" yResolution="1050" x="0" y="0" xsize="1" ysize="1">
+                <frustum>
+                    <yaw>37.940127196170188</yaw>
+                    <pitch>4.579777104320474</pitch>
+                    <roll>30.176306779262966</roll>
+                    <rightAngle>26.573039790606156</rightAngle>
+                    <leftAngle>-26.552558626517051</leftAngle>
+                    <upAngle>20.553969392040187</upAngle>
+                    <downAngle>-20.554420712509071</downAngle>
+                </frustum>
+                <coordinateFrame>
+                    <posx>-0.90127</posx>
+                    <posy>-1.05956</posy>
+                    <posz>-0.35408</posz>
+                    <yawx>0.00000</yawx>
+                    <yawy>0.00000</yawy>
+                    <yawz>-1.00000</yawz>
+                    <pitchx>1.00000</pitchx>
+                    <pitchy>0.00000</pitchy>
+                    <pitchz>0.00000</pitchz>
+                    <rollx>0.00000</rollx>
+                    <rolly>1.00000</rolly>
+                    <rollz>0.00000</rollz>
+                </coordinateFrame>
+            </region>
+        </buffer>
+    </display>
+    <files>
+    </files>
+    <fileset region="Staging Projector_01">
+        <geometryWarpFile>
+            <geometricUnit>m</geometricUnit>
+            <originOf3DData>unknown</originOf3DData>
+            <path></path>
+            <interpolation>unknown</interpolation>
+        </geometryWarpFile>
+        <alphaMap>
+            <bitDepth>8</bitDepth>
+            <componentDepth>1</componentDepth>
+            <gammaEmbedded>1.00000</gammaEmbedded>
+            <path></path>
+        </alphaMap>
+        <distortionMap>
+            <path></path>
+        </distortionMap>
+    </fileset>
+    <fileset region="Staging Projector_02">
+        <geometryWarpFile>
+            <geometricUnit>m</geometricUnit>
+            <originOf3DData>unknown</originOf3DData>
+            <path></path>
+            <interpolation>unknown</interpolation>
+        </geometryWarpFile>
+        <alphaMap>
+            <bitDepth>8</bitDepth>
+            <componentDepth>1</componentDepth>
+            <gammaEmbedded>1.00000</gammaEmbedded>
+            <path></path>
+        </alphaMap>
+        <distortionMap>
+            <path></path>
+        </distortionMap>
+    </fileset>
+    <extensionSet>
+        <extension Name="BufferExtension" hasExternalFiles="false">
+            <buffer id="wolf_90_markerless.cal">
+                <region id="Staging Projector_01">
+                    <fisheye>
+                        <f1>1.00000</f1>
+                        <f3>3.00000</f3>
+                        <f5>5.00000</f5>
+                        <f7>7.00000</f7>
+                        <f9>9.00000</f9>
+                    </fisheye>
+                    <anamorphic>
+                        <angle>572.95780</angle>
+                        <aspect>1.10000</aspect>
+                    </anamorphic>
+                </region>
+            </buffer>
+        </extension>
+        <extension Name="MystiqueExtension" hasExternalFiles="false">
+            <GeneratedBy>Mystique Install (Engineering Build) 2.1.0.0 Nov  2 2018</GeneratedBy>
+        </extension>
+    </extensionSet>
+</MPCDI>
