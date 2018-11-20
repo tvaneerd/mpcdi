@@ -126,7 +126,7 @@ which you can then move into your x,y,z system.
 
 
 
-[logo]: https://github.com/tvaneerd/stuff/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
+[logo]: https://github.com/tvaneerd/mpcdi/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
 
 
 `<frustum>`
