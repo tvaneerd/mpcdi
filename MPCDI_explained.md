@@ -113,7 +113,7 @@ Section 2.2.2:
 > each of the yaw, pitch, and roll directions. (See Figure 2-2 for a graphical representation of these
 > unit vectors.)”
 
-That's not much to go on.  I'm not even sure if I understand it completely.  But, by what is now convention, Mystique uses `<coordinateframe>` as so:
+That's not much to go on.  By what is now convention, Mystique uses `<coordinateframe>` as so:
 
 The intent of the node is to communicate where the object (ie projector) is, but that should just be 3 numbers:
 
