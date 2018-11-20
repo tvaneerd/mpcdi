@@ -237,7 +237,7 @@ The 4 angles form a field of view of the projected light.  Positive angles are t
 
 Looking down at a planar projection from above,
 
-`L` is the `<leftAngle>`  
+`L` is the `<leftAngle>`  - note this is likely negative
 `R` is the `<rightAngle>`  
 `t` is the throw distance  
 `e` is the distance to the left (resulting from `leftAngle`)  
@@ -252,20 +252,20 @@ Looking down at a planar projection from above,
 Let's do some math:
 
 ```
-tanL = e/t
+tanL = -e/t  (as L in the diagram would be negative)
 tanR = r/t
 
-e = t * tanL
+e = -t * tanL
 r = t * tanR
 
 e + r = w
-t*tanL + t*tanR = w
-t (tanL + tanR) = w
-tanL + tanR = w/t
+-t*tanL + t*tanR = w
+t (tanR - tanL) = w
+tanR - tanL = w/t
 
 let T = throw-ratio = t/w 
 
-T = 1 / (tanL + tanR)
+T = 1 / (tanR - tanL)
 ```
 
 OK, from left and right angles, we have the throw ratio.  We also need the lens offset:
@@ -277,28 +277,28 @@ From the diagram:
 	e + h = w/2
 Thus:
         r - h = e + h
-Recall r = t*tanR and e = t*tanL
+Recall r = t*tanR and e = -t*tanL
 Sub:
-	t*tanR – h = t*tanL + h
+	t*tanR – h = -t*tanL + h
 Rearrange:
-	h = t(tanR-tanL)/2
+	h = t(tanR+tanL)/2
 Recall: T = t/w  ie  t = Tw
 Sub:
-	h = Tw(tanR-tanL)/2
-And (from above): T = 1/(tanR+tanL)
+	h = Tw(tanR+tanL)/2
+And (from above): T = 1/(tanR-tanL)
 Sub:
-	h = (1/(tanR+tanL))w(tanR-tanL)/2
+	h = (1/(tanR-tanL))w(tanR+tanL)/2
 ie
-	        w(tanR – tanL)
+	        w(tanR + tanL)
 	h =  -------------------
-	        2(tanR + tanL)
+	        2(tanR - tanL)
 
 Typically lens offset is represented as a percent of half-width:
 	h% = h/(w/2)
-	h% = (tanR – tanL)/(tanR + tanL)
+	h% = (tanR + tanL)/(tanR - tanL)
     
 Similarly, vertical offset:
-    v% = (tan(Up) - tan(Down)/(tan(Up) + tan(Down))
+    v% = (tan(Up) + tan(Down)/(tan(Up) - tan(Down))
 ```
 
 
