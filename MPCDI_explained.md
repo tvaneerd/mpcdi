@@ -1,20 +1,33 @@
 The MPCDI spec is a VESA spec, and the full specification can be found online.
 
-However, many have found the doc less than clear, so here is some additional notes; my understanding of the spec:
+However, many have found the doc less than clear, so here is some additional notes; ie my understanding of the spec.
+
+_These are NOT a substitute for reading and following the official VESA spec_
+
+MPCDI the file, the zip, the mystery
+----------
+
+An MPCDI file is actually a zip file containing a XML file (typically called mpcdi.xml) and then warp and blend files, etc.
+
+*HOWEVER* Mystique doesn't write out warp and blend info (we just send it directly to the projectors), so we only write out the XML file.  By convention, we use the extension `.mpcdi.xml`, so for the "foo" project, the file will be named `foo.mpcdi.xml`.  (The user can change the MPCDI filename and location from the Mystique UI.)
+
+
+_The rest of this document is about the MPCDI XML format and the information that Mystique exports to that file_
 
 Header
 --------
 
+As mentioned, it's XML:
 
     <?xml version="1.0" encoding="utf-8"?>
     <MPCDI profile="sl" geometry="2" color="1" date="2018-11-16 19:30:11" version="2.0">
 
-It's XML. It's MPCDI version 2.0.  For 3D, we use the "sl" (shader lamp) profile, which means we will export projector "poses" (position, orientation, etc).
+It's MPCDI version 2.0.  For 3D, we use the "sl" (shader lamp) profile, which means we will export projector "poses" (position, orientation, etc) via the `<region>` node (see below).
 
 Overall structure
 --------
 
-Next in the XML is a single `<display>` node, which describes the scene.  Within the display there _could be_ multiple `<buffer>` nodes (ie for projecting on completely separate surfaces/objects) but, really, it can all be done with a single buffer, so, by convention, Mystique just sets the buffer id to the name of the Mystique file of the project.
+Next in the XML is a single `<display>` node, which describes the scene.  Within the display there _could be_ multiple `<buffer>` nodes (ie for projecting on completely separate surfaces/objects) but, really, it can all be done with a single buffer, so, by convention, Mystique just writes a single `<buffer>` and sets the buffer id to the name of the Mystique file of the project.
 
 Within a buffer, there are multiple `<region>` nodes - basically one for each projector.
 
@@ -26,12 +39,14 @@ Within a buffer, there are multiple `<region>` nodes - basically one for each pr
             <region...>
             ...
             </region>
-            <region>
+            <region...>
             ...
             </region>
         </buffer>
     </display>
-    
+
+All the good info (ie per-projector info) is in the `<region>` nodes.
+
 `<region>`
 ---------
 
@@ -64,6 +79,10 @@ A region looks like:
             </region>
 
 
+The `<frustum>` defines the projector's orientation, and its field of view. See below.
+The `<coordinateframe>` defines the projector's position... and is complicated. See below.
+
+Let's look at each part.
 
 
 `<coordinateframe>`
@@ -93,6 +112,8 @@ Section 2.2.2:
 > definitions provided for yaw, pitch, and roll. They will be expressed as orthonormal unit vectors for
 > each of the yaw, pitch, and roll directions. (See Figure 2-2 for a graphical representation of these
 > unit vectors.)”
+
+That's not much to go on.  I'm not even sure if I understand it completely.  But, by what is now convention, Mystique uses `<coordinateframe>` as so:
 
 The intent of the node is to communicate where the object (ie projector) is, but that should just be 3 numbers:
 
@@ -196,6 +217,22 @@ which you can then move into your x,y,z system.
 -------
 
 `<frustum>` describes which way the projector is facing, as well as its field of view.
+
+                <frustum>
+                    <yaw>-54.649008076582298</yaw>
+                    <pitch>30.086445865802251</pitch>
+                    <roll>-35.258246325136348</roll>
+                    <rightAngle>26.536123041449411</rightAngle>
+                    <leftAngle>-26.579532980277939</leftAngle>
+                    <upAngle>20.556835397199524</upAngle>
+                    <downAngle>-20.543387795160175</downAngle>
+                </frustum>
+                
+Yaw, pitch, and roll are angles (in degrees) around the axes as shown in the airplane diagram.  Note the direction of the arrows.  Also note the order: from the point of view of the _pilot_, 
+
+1. first the plane (or projector) is turned left/right by `yaw` degrees, where positive is a turn to the right.
+2. then the plane/projector is tilted up by `pitch` degrees
+3. then the plane/projector is rolled 
 
 ... to be continued ...
 
