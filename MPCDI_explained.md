@@ -231,7 +231,7 @@ The `yaw`, `pitch`, and `roll` are angles (in degrees) around the axes as shown 
 2. then the plane/projector is tilted up by `pitch` degrees
 3. then the plane/projector is rolled along its axis - ie a positive roll is raising the left wing while lowering the right wing
 
-(if all 3 of `(yaw, pitch, roll)` are 0, the plane/projector is facing forward along the roll axis)
+(if all 3 of `(yaw, pitch, roll)` are 0, the plane/projector is facing forward along the roll axis.  ie "into" the screen of the computer, or towards the surface being projected on)
 
 
 ### `<rightAngle>` et al
