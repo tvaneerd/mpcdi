@@ -305,7 +305,10 @@ Similarly, vertical offset:
 ```
 
 
+### Other math, everyone likes math
 
+FOV (Field of View) is simply = `rightAngle - leftAngle` (remember `leftAngle` is typically negative)  
+Aspect Ratio = `(tan(rightAngle) - tan(leftAngle)) / (tan(topAngle) - tan(bottomAngle))
 
 
 
