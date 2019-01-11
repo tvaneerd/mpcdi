@@ -312,6 +312,33 @@ Aspect Ratio = `(tan(rightAngle) - tan(leftAngle)) / (tan(topAngle) - tan(bottom
 
 
 
+## Extensions
+
+The MPCDI spec allows for extensions.  All `<extension>` nodes are found within the top-level `<extensionSet>` node.
+
+Mystique writes two extensions, `<MystiqueExtension>` and `<BufferExtension>`
+
+### MystiqueExtension
+
+This extension includes a `<GeneratedBy>` node that has a string that somehow identifies the application that wrote the file.  There is no defined format for this string, but it should be enough to uniquely identify the application (including version, etc).
+
+    <MPCDI>
+        ...
+        <extensionSet>
+	    ...
+            <extension Name="MystiqueExtension" hasExternalFiles="false">
+                <GeneratedBy>Mystique Install 2.1.0.0</GeneratedBy>
+            </extension>
+	    ...
+        </extensionSet>
+	...
+    </MPCDI>
+
+### BufferExtension
+
+The definition of `region` in MPCDI lacks the ability to specify lens info such as fisheye coefficients and/or anamorphic parameters. Instead of hacking these directly onto the `region` node, a `<BufferExtension>` node is added, that parallels the `buffer` node.  For each `buffer` and each `region` that needs extra data, the extra data can be found in the `BufferExtension`.
+
+A full explanation of the fisheye and anamorphic extensions can be found in the https://github.com/tvaneerd/mpcdi/blob/master/fisheye.md document.
 
 
 [airplane]: https://github.com/tvaneerd/mpcdi/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
