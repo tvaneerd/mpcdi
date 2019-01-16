@@ -2,6 +2,7 @@ MPCDI does not allow for non-planar lenses.
 We have added fish-eye and anamorphic data as an extension.
 
 We have added an extension called `BufferExtension` which contains extra data for each buffer/region as necessary.
+Note that it contains horizontal and vertical offset info - this can typically be calculated from the `<frustum>` node, but in the case of a 180 degree fisheye, you would get divide by zero :-/ So we instead just the numbers you really want, directly.
 
 Example:
 
