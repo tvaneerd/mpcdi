@@ -11,8 +11,8 @@ Example:
             <buffer id="wolf_90_markerless.cal">
                 <region id="Staging Projector_01">
                     <fisheye>
-                        <horizontalOffset>.20000</horizontalOffset>
-                        <verticalOffset>-.10000</verticalOffset>
+                        <horizontalOffset>0.20000</horizontalOffset>
+                        <verticalOffset>-0.10000</verticalOffset>
                         <f1>0.29907</f1>
                         <f3>-0.0002311605</f3>
                         <f5>0.0000060483</f5>
