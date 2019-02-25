@@ -55,7 +55,7 @@ To account for lens distortions, or a more generic lens model, a more complicate
 
 > r = f<sub>1</sub>⋅θ + f<sub>2</sub>⋅θ<sup>2</sup> + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>4</sub>⋅θ<sup>4</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>6</sub>⋅θ<sup>6</sup> + f<sub>7</sub>⋅θ<sup>7</sup>...
 
-Now, it turns out that only the odd coefficients are needed (you want an odd curve, not even, ...vigour hand waving... etc etc...).  And the coefficients get smaller and smaller, so there isn't much sense going past `f7`, so:
+Now, it turns out that only the odd coefficients are needed (you want an odd curve, not even, etc, etc, ...vigourous hand waving...).  And the coefficients get smaller and smaller, so there isn't much sense going past `f7`, so:
     
 > r = f<sub>1</sub>⋅θ + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>7</sub>⋅θ<sup>7</sup>
     
