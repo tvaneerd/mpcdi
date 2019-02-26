@@ -1,4 +1,4 @@
-# MPCDI Extensions for Fisheye and Anamorpihc Lens
+# MPCDI Extensions for Fisheye and Anamorphic Lens
 
 MPCDI does not allow for non-planar lenses.
 We have added fish-eye and anamorphic data as an extension.
