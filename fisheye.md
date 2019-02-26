@@ -1,3 +1,5 @@
+# MPCDI Extensions for Fisheye and Anamorpihc Lens
+
 MPCDI does not allow for non-planar lenses.
 We have added fish-eye and anamorphic data as an extension.
 
@@ -33,9 +35,14 @@ Example:
 
 ## What are those `f1,f3,f5,f7` numbers?
 
-These are the **fisheye coefficients**. A typical, _equidistant_ fisheye lens follows this equation
+Those are the **fisheye coefficients**.
+
+![alt text][fisheye]
+
+ A typical, _equidistant_ fisheye lens follows this equation:
 
 > r = f⋅θ
+
 
 See also https://en.wikipedia.org/wiki/Fisheye_lens
 
@@ -59,4 +66,24 @@ Now, it turns out that only the odd coefficients are needed (you want an odd cur
     
 > r = f<sub>1</sub>⋅θ + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>7</sub>⋅θ<sup>7</sup>
     
+So that's the fisheye equation.  
 
+### Offsets
+
+But wait.  
+`r` is the distance from the _principal axis_, but that might not be in the center of the DMD.  So we also export the horizontal and vertical offsets (similar to regular planar lens offsets).
+
+## Anamorphic
+
+In addition to fisheye, a lens can be anamorphic - ie non-square pixels. ie stretched a bit vertically or horizontally.  We export this as `<aspect>` which is simply the ratio of squareness of a pixel.  An aspect ratio of 1.0 is normal, square pixels.
+
+Lastly there is a skew `<angle>`. Lenses are not alays attached 100% aligned.  If the lens is slightly turned to the left? right? then the skew angle will not be `0` degrees....
+
+
+
+
+
+
+
+
+[fisheye]: https://github.com/tvaneerd/mpcdi/blob/master/fisheye.PNG "simple equidistant fisheye lens"
