@@ -37,7 +37,7 @@ Example:
 
 Those are the **fisheye coefficients**.
 
-![alt text][fisheye]
+![alt text][fisheye]  ![alt text][fisheyeflat]
 
  A typical, _equidistant_ fisheye lens follows this equation:
 
@@ -48,7 +48,7 @@ See also https://en.wikipedia.org/wiki/Fisheye_lens
 
 So light entering a lens (ie for a camera) comes in at an angle `θ` (in radians, say). `f` is the focal length. `r` is the distance between the resulting pixel on the camera flim/sensor and the center of the film/sensor.
 
-`f` is typically measured in `mm`.  However, if you only have the resultant image, not the actual lens, you can only measure `r` in terms of pixels. This means `f` is measured in `pixels/radians`.
+`f` is typically measured in `mm`.  However, if you only have the resultant image, not the actual lens, you can only measure `r` in terms of pixels, or in units relative to the width of the sensor. If we set 1 to be half the width of the DMD (to match how lens-offset is measured) then this means `f` is measured in `half-widths/radians`.
 
 Note that is the equation of light _entering_ the lens of a camera, and landing on the sensor.  We are more concerned with light _exiting_ the lens of a projector.  The equation is the same, but we are now talking about DMD pixels, not sensor pixels.
 
@@ -75,7 +75,7 @@ But wait.
 
 ## Anamorphic
 
-In addition to fisheye, a lens can be anamorphic - ie non-square pixels. ie stretched a bit vertically or horizontally.  We export this as `<aspect>` which is simply the ratio of squareness of a pixel.  An aspect ratio of 1.0 is normal, square pixels.
+In addition to fisheye, a lens can be anamorphic - ie non-square pixels. ie stretched a bit vertically or horizontally.  We export this as `<aspect>` which is simply the ratio of squareness of a pixel.  An aspect ratio of 1.0 is normal, square pixels.  An aspect of 1.2 is _taller_ pixels.  ie y/x.  (This is thus not the same as typical TV/video aspect ratio, which is x/y.  But things like throw-ratio are width-based, so we make aspect relative to width as well.)
 
 Lastly there is a skew `<angle>`. Lenses are not alays attached 100% aligned.  If the lens is slightly turned to the left? right? then the skew angle will not be `0` degrees....
 
@@ -87,3 +87,4 @@ Lastly there is a skew `<angle>`. Lenses are not alays attached 100% aligned.  I
 
 
 [fisheye]: https://github.com/tvaneerd/mpcdi/blob/master/fisheye.PNG "simple equidistant fisheye lens"
+[fisheyeflat]: https://github.com/tvaneerd/mpcdi/blob/master/fisheyeflat.PNG "on the sensor"
