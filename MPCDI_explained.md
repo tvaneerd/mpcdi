@@ -255,20 +255,20 @@ Looking down at a planar projection from above,
 Let's do some math:
 
 ```
-tanL = -e/t  (as L in the diagram would be negative)
-tanR = r/t
+tan(-L) = e/t  (as L in the diagram would be negative)
+tan(R) = r/t
 
-e = -t * tanL
-r = t * tanR
+e = t * tan(-L)
+r = t * tan(R)
 
 e + r = w
--t*tanL + t*tanR = w
-t (tanR - tanL) = w
-tanR - tanL = w/t
+t*tan(-L) + t*tan(R) = w
+tan(-L) + tan(R) = w/t
 
 let T = throw-ratio = t/w 
 
-T = 1 / (tanR - tanL)
+T = 1 / (tan(-L) + tan(R))
+T = 1 / (tan(R) - tan(L))
 ```
 
 OK, from left and right angles, we have the throw ratio.  We also need the lens offset:
