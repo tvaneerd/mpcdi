@@ -22,7 +22,7 @@ Example:
                     </fisheye>
                     <anamorphic>
                         <angle>0.01000</angle>
-                        <aspect>1.20000</aspect>
+                        <ratio>1.20000</ratio>
                     </anamorphic>
                 </region>
             </buffer>
@@ -37,7 +37,7 @@ Example:
 
 Those are the **fisheye coefficients**.
 
-![alt text][fisheye]  ![alt text][fisheyeflat]
+![alt text][fisheye]
 
  A typical, _equidistant_ fisheye lens follows this equation:
 
@@ -50,13 +50,15 @@ So light entering a lens (ie for a camera) comes in at an angle `θ` (in radians
 
 `f` is typically measured in `mm`.  However, if you only have the resultant image, not the actual lens, you can only measure `r` in terms of pixels, or in units relative to the width of the sensor. If we set 1 to be half the width of the DMD (to match how lens-offset is measured) then this means `f` is measured in `half-widths/radians`.
 
+![alt text][fisheyeflat]
+  
 Note that is the equation of light _entering_ the lens of a camera, and landing on the sensor.  We are more concerned with light _exiting_ the lens of a projector.  The equation is the same, but we are now talking about DMD pixels, not sensor pixels.
 
 ### Add in reality
 
 > In theory, there is no difference between theory and reality, but in reality...
 
-Lens are not perfect.  Nor centered.
+Lens are not perfect.
 
 To account for lens distortions, or a more generic lens model, a more complicated function (similar to Taylor expansion) can be used:
 
@@ -70,16 +72,19 @@ So that's the fisheye equation.
 
 ### Offsets
 
-But wait.  
+Lens aren't centered either.  
 `r` is the distance from the _principal axis_, but that might not be in the center of the DMD.  So we also export the horizontal and vertical offsets (similar to regular planar lens offsets).
 
 ## Anamorphic
 
-In addition to fisheye, a lens can be anamorphic - ie non-square pixels. ie stretched a bit vertically or horizontally.  We export this as `<aspect>` which is simply the ratio of squareness of a pixel.  An aspect ratio of 1.0 is normal, square pixels.  An aspect of 1.2 is _taller_ pixels.  ie y/x.  (This is thus not the same as typical TV/video aspect ratio, which is x/y.  But things like throw-ratio are width-based, so we make aspect relative to width as well.)
+In addition to fisheye, a lens can be anamorphic - ie non-square pixels. ie stretched a bit vertically or horizontally.  We export this as `<ratio>` which is simply the ratio of squareness of a pixel.  An anamorphic ratio of 1.0 is normal, square pixels.  A ratio of 1.2 is _taller_ pixels.  ie y/x.  (ie anamorpihc ratio is the reciprocal of the typical TV/video x/y aspect ratio.  But things like throw-ratio are width-based, so we make anamorphic ratio relative to width as well.)
 
-Lastly there is a skew `<angle>`. Lenses are not alays attached 100% aligned.  If the lens is slightly turned to the left? right? then the skew angle will not be `0` degrees....
+![alt text][anamorphicRatio]
+
+Lastly there is a skew `<angle>`. Lenses are not always attached 100% aligned.  Is the lens is slightly turned to the left? right? then the skew angle will not be `0` degrees
 
 
+![alt text][anamorphicAngle]
 
 
 
@@ -88,3 +93,5 @@ Lastly there is a skew `<angle>`. Lenses are not alays attached 100% aligned.  I
 
 [fisheye]: https://github.com/tvaneerd/mpcdi/blob/master/fisheye.PNG "simple equidistant fisheye lens"
 [fisheyeflat]: https://github.com/tvaneerd/mpcdi/blob/master/fisheyeflat.PNG "on the sensor"
+[anamorphicRatio]: https://github.com/tvaneerd/mpcdi/blob/master/anamorphicRatio.PNG "anamorphicRatio of 1.2"
+[anamorphicAngle]: https://github.com/tvaneerd/mpcdi/blob/master/anamorphicAngle.PNG "anamorphic skew angle"
