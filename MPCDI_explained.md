@@ -307,9 +307,11 @@ Similarly, vertical offset:
 
 ### Other math, everyone likes math
 
-FOV (Field of View) is `2atan((tanR-tanL)/2)` (remember `leftAngle` is typically negative)  
+FOV (Field of View) is not just left + right, because FOV is measured from the middle of the screen:
 
 ![alt text][fov]
+
+Thus `FOV = 2atan((tanR-tanL)/2)` (remember `leftAngle` is typically negative)  
 
 Aspect Ratio = `(tan(rightAngle) - tan(leftAngle)) / (tan(topAngle) - tan(bottomAngle))`
 
