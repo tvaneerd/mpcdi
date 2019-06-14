@@ -307,7 +307,7 @@ Similarly, vertical offset:
 
 ### Other math, everyone likes math
 
-FOV (Field of View) is = `2atan((tanR-tanL)/2)` (remember `leftAngle` is typically negative)  
+FOV (Field of View) is `2atan((tanR-tanL)/2)` (remember `leftAngle` is typically negative)  
 
 ![alt text][fov]
 
@@ -346,7 +346,7 @@ A full explanation of the fisheye and anamorphic extensions can be found in the 
 
 [airplane]: https://github.com/tvaneerd/mpcdi/blob/master/MPCDI_plane.png "secret <coordinateframe> decoder ring"
 [frustum]: https://github.com/tvaneerd/mpcdi/blob/master/ThrowRatioAndOffset.png "secret <frustum> decoder ring"
-[fov]: https://github.com/tvaneerd/mpcdi/blob/master/fov.png "fov != L + R"
+[fov]: https://github.com/tvaneerd/mpcdi/blob/master/fov.PNG "fov != L + R"
 
 
 
