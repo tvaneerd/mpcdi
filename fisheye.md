@@ -66,7 +66,7 @@ Now, it turns out that only the odd coefficients are needed (you want an odd cur
     
 > r = f<sub>1</sub>⋅θ + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>7</sub>⋅θ<sup>7</sup>
     
-So that's thegeneral fisheye equation.
+So that's the general fisheye equation that we use.
 
 ### Offsets
 
