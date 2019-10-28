@@ -54,13 +54,11 @@ So light entering a lens (ie for a camera) comes in at an angle `θ` (in radians
   
 Note that is the equation of light _entering_ the lens of a camera, and landing on the sensor.  We are more concerned with light _exiting_ the lens of a projector.  The equation is the same, but we are now talking about DMD pixels, not sensor pixels.
 
-### Add in reality
+### Generalizing Fisheye Lenses
 
-> In theory, there is no difference between theory and reality, but in reality...
+https://en.wikipedia.org/wiki/Fisheye_lens lists a number of different fish-eye lens equations.
 
-Lens are not perfect.
-
-To account for lens distortions, or a more generic lens model, a more complicated function (similar to Taylor expansion) can be used:
+We can approximate all of these via a polynomial (somewhat similar to Taylor expansion), ie:
 
 > r = f<sub>1</sub>⋅θ + f<sub>2</sub>⋅θ<sup>2</sup> + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>4</sub>⋅θ<sup>4</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>6</sub>⋅θ<sup>6</sup> + f<sub>7</sub>⋅θ<sup>7</sup>...
 
@@ -68,11 +66,11 @@ Now, it turns out that only the odd coefficients are needed (you want an odd cur
     
 > r = f<sub>1</sub>⋅θ + f<sub>3</sub>⋅θ<sup>3</sup> + f<sub>5</sub>⋅θ<sup>5</sup> + f<sub>7</sub>⋅θ<sup>7</sup>
     
-So that's the fisheye equation.  
+So that's the general fisheye equation that we use.
 
 ### Offsets
 
-Lens aren't centered either.  
+Lens aren't centered.  
 `r` is the distance from the _principal axis_, but that might not be in the center of the DMD.  So we also export the horizontal and vertical offsets (similar to regular planar lens offsets).
 
 ## Anamorphic
